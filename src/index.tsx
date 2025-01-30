@@ -1,13 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App.tsx'; // Ensure './App' matches the file name exactly
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+import { App } from './components/App';
+import { User } from './components/App/App.types';
+
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement as HTMLElement);
+
+const user: User = {
+  id: 1,
+  name: 'Jon',
+  email: 'mail@example.com',
+};
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StrictMode>
+    <App user={user} />
+  </StrictMode>
 );
